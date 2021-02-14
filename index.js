@@ -48,8 +48,6 @@ app.get('/movies/:movieId',async (req,res)=>{
 
 app.post('/movies/',async (req,res)=>{
 	const q = `SELECT movieId,title,genres FROM movies WHERE title LIKE '${req.body.keyword}%'`;
-	//console.log(q);
-	//res.json(req.body.keyword);
 	try{
 		const results = await query(q);
 		res.json(results);
@@ -92,8 +90,6 @@ app.post('/ratings/',async (req,res)=>{
 		b = a.slice(0, -2);
 		console.log(b)
 		const q = `SELECT userId,movieId,rating,timestamp FROM ratings WHERE ${b}`
-		//console.log(req.body.movieList);
-		//res.json(req.body.movieList)
 		try{
 			const results = await query(q);
 			res.json(results);
@@ -104,19 +100,7 @@ app.post('/ratings/',async (req,res)=>{
 		}
   });
 
-app.listen(8081);
-
-// function query_(q,a){
-// 	return new Promise(function(resolve, reject){
-// 		db.all(q,...a,(err,rows)=>{
-// 			if(err){
-// 				reject(err);
-// 				return;
-// 			}
-// 			resolve(rows);
-// 		});
-// 	});
-// }
+  app.listen(3000);
 
 function query(q){
 	return new Promise(function(resolve, reject){
