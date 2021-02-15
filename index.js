@@ -13,13 +13,6 @@ var db = new sqlite3.Database('movies.sqlite3', (err)=>{
       console.log(error.message)
     }
     console.log('connected to movies Database')
-
-    // db.close((err)=>{
-    //   if(err){
-    //     console.log(error.message)
-    //   }
-    // })
-    // console.log('database closed')
 })
 
 app.get('/movies/', async (req, res)=>{
